@@ -1,27 +1,23 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 class NavBar extends Component {
 
     render() {
         return (
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <Link class="navbar-brand" to="/">Vidly</Link>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <Link class="nav-link" to="/movies">Movies <span class="sr-only">(current)</span></Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to="/customers">Customers</Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to="/rentals">Rentals</Link>
-                        </li>
-                    </ul>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <Link className="navbar-brand" to="/">Vidly</Link>
+               
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <div className="navbar-nav">
+                        
+                        <NavLink className="nav-link nav-item" to="/movies">Movies</NavLink>
+                       
+                        <NavLink className="nav-link nav-item" to="/customers">Customers</NavLink>
+                        
+                        <NavLink className="nav-link nav-item" to="/rentals">Rentals</NavLink>
+                        
+                    </div>
                 </div>
             </nav>
         );
