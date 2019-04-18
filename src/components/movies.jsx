@@ -70,13 +70,14 @@ class Movies extends Component {
 
         const { length: count } = this.state.movies; // Renaming length to count
         const { pageSize, currentPage, sortColumn } = this.state; // Renaming movies to allMovies
+        const {user} = this.props;
+
         if (count === 0) return <p>There are no movies in the database</p>
 
         const { totalCount, data: movies } = this.getPageData();
 
         return (
             <main className="container m-4">
-                <p>Showing {totalCount} movies in the database.</p>
 
                 <div className="row">
                     <div className="col-3">
@@ -88,8 +89,11 @@ class Movies extends Component {
                     </div>
 
                     <div className="col">
+                    <p>Showing {totalCount} movies in the database.</p>
+                        {user && 
                         <Link to="/movies/new" className="btn btn-primary"
                             style={{ marginBottom: 20 }}>New Movie</Link>
+                        }
                         <SearchBox value={this.state.searchQuery} onChange={this.handleSearch} />
                         {/* <button onClick={this.handleNewMovie} className="btn btn-primary">New Movie</button> */}
                         <MoviesTable
