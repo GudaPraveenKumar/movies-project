@@ -1,29 +1,28 @@
 import http from './httpService';
-import {apiEndpoint} from '../config.json';
 
-const apiUrl = `${apiEndpoint}/movies`;
+const apiEndpoint = "/movies";
 
-function movieUrl(id){
-    return `${apiUrl}/${id}`
+function movieUrl(id) {
+    return `${apiEndpoint}/${id}`
 }
 
 export function getMovies() {
-    return http.get(`${apiUrl}`);
+    return http.get(apiEndpoint);
 }
 
-export function getMovie(movieId){
+export function getMovie(movieId) {
     return http.get(movieUrl(movieId));
 }
 
-export function saveMovie(movie){
-    if(movie._id){
-        const body = {...movie};
+export function saveMovie(movie) {
+    if (movie._id) {
+        const body = { ...movie };
         delete body._id;
         return http.put(movieUrl(movie._id), body);
-    }else{
-        return http.post(`${apiUrl}`, movie);
+    } else {
+        return http.post(apiEndpoint, movie);
     }
-    
+
 }
 
 export function deleteMovie(movieId) {
